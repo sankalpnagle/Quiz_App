@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const API_BASE_URL = "http://localhost:8000/api";
+const API_BASE_URL = "https://quiz-app-g3u7.onrender.com/api";
 
 const UserDashboard = () => {
   const [quizzes, setQuizzes] = useState([]);

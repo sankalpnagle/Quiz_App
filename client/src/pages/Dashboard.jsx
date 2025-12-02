@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
-const API_BASE_URL = "http://localhost:8000/api";
+const API_BASE_URL = "https://quiz-app-g3u7.onrender.com/api";
 
 const Dashboard = () => {
   const { token } = useSelector((state) => state.auth);

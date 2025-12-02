@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8000/api";
+const API_BASE_URL = "https://quiz-app-g3u7.onrender.com/api";
 
 // ✅ Login thunk
 export const loginUser = createAsyncThunk(
@@ -14,9 +14,7 @@ export const loginUser = createAsyncThunk(
       });
       return res.data; // {_id, name, email, role, token}
     } catch (err) {
-      return rejectWithValue(
-        err.response?.data?.message || "Login failed"
-      );
+      return rejectWithValue(err.response?.data?.message || "Login failed");
     }
   }
 );
@@ -34,9 +32,7 @@ export const registerUser = createAsyncThunk(
       });
       return res.data;
     } catch (err) {
-      return rejectWithValue(
-        err.response?.data?.message || "Register failed"
-      );
+      return rejectWithValue(err.response?.data?.message || "Register failed");
     }
   }
 );

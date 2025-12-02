@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 
-const API_BASE_URL = "http://localhost:8000/api";
+const API_BASE_URL = "https://quiz-app-g3u7.onrender.com/api";
 
 const TakeQuizPage = () => {
   const { id } = useParams();
@@ -41,12 +41,10 @@ const TakeQuizPage = () => {
     try {
       const payload = {
         participantName,
-        answers: Object.entries(answers).map(
-          ([questionId, userAnswer]) => ({
-            questionId,
-            userAnswer,
-          })
-        ),
+        answers: Object.entries(answers).map(([questionId, userAnswer]) => ({
+          questionId,
+          userAnswer,
+        })),
       };
 
       const { data } = await axios.post(
@@ -100,9 +98,7 @@ const TakeQuizPage = () => {
               <h2 className="text-2xl md:text-3xl font-semibold text-slate-800">
                 Results
               </h2>
-              <p className="text-sm text-slate-500">
-                Quiz: {quiz.title}
-              </p>
+              <p className="text-sm text-slate-500">Quiz: {quiz.title}</p>
             </div>
             <Link
               to="/"
@@ -115,17 +111,13 @@ const TakeQuizPage = () => {
           <div className="bg-white shadow-md rounded-2xl p-6 md:p-8">
             <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
               <div>
-                <p className="text-sm text-slate-600">
-                  Score
-                </p>
+                <p className="text-sm text-slate-600">Score</p>
                 <p className="text-2xl font-semibold text-slate-800">
                   {result.score}/{result.totalQuestions}
                 </p>
               </div>
               <div className="flex flex-col items-start md:items-end">
-                <p className="text-sm text-slate-600">
-                  Percentage
-                </p>
+                <p className="text-sm text-slate-600">Percentage</p>
                 <p className="text-xl font-semibold text-indigo-600">
                   {result.percentage.toFixed(2)}%
                 </p>
@@ -158,13 +150,9 @@ const TakeQuizPage = () => {
                   </p>
                   <p className="mt-1 text-xs font-semibold">
                     {item.isCorrect ? (
-                      <span className="text-emerald-600">
-                        ✅ Correct
-                      </span>
+                      <span className="text-emerald-600">✅ Correct</span>
                     ) : (
-                      <span className="text-red-500">
-                        ❌ Incorrect
-                      </span>
+                      <span className="text-red-500">❌ Incorrect</span>
                     )}
                   </p>
                 </li>
@@ -187,9 +175,7 @@ const TakeQuizPage = () => {
               {quiz.title}
             </h2>
             {quiz.description && (
-              <p className="text-sm text-slate-500 mt-1">
-                {quiz.description}
-              </p>
+              <p className="text-sm text-slate-500 mt-1">{quiz.description}</p>
             )}
           </div>
           <Link
@@ -203,9 +189,7 @@ const TakeQuizPage = () => {
         {/* Card */}
         <div className="bg-white shadow-md rounded-2xl p-6 md:p-8">
           {error && (
-            <p className="mb-4 text-sm text-red-600 font-medium">
-              {error}
-            </p>
+            <p className="mb-4 text-sm text-red-600 font-medium">{error}</p>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -292,9 +276,7 @@ const TakeQuizPage = () => {
                         className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm min-h-[80px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                         placeholder="Type your answer here..."
                         value={answers[q._id] || ""}
-                        onChange={(e) =>
-                          handleChange(q._id, e.target.value)
-                        }
+                        onChange={(e) => handleChange(q._id, e.target.value)}
                       />
                     </div>
                   )}
