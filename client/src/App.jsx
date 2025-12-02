@@ -7,12 +7,16 @@ import Dashboard from "./pages/Dashboard";
 import UserDashboard from "./pages/UserDashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import TakeQuizPage from "./pages/TakeQuizPage";
+import Header from "./components/Header";
 
 function App() {
 
 
   return (
     <>
+    <div>
+      <Header/>
+    </div>
       <Routes>
         <Route path="/" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
