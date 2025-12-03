@@ -16,7 +16,11 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerUser({ name, email, password /*, role */ }));
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters long");
+      return;
+    }
+    dispatch(registerUser({ name, email, password, role }));
   };
 
   useEffect(() => {
